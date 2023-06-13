@@ -5,6 +5,9 @@ const PORT = 3500
 const mongoose = require('mongoose')
 const musicRouter = require('./routers/musicRouter')
 
+app.use(express.json())
+app.use('./uploads', express.static('uploads'))
+
 mongoose.connect(process.env.DB_URL)
 const db = mongoose.connection
 db.on("error", (error)=> console.log(error.message))
